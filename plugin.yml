@@ -1,0 +1,5 @@
+main: com.daniel.hexcolorcodes.Main
+name: MinecraftHexcodeColors
+description: send a message and get a hexcode response message
+version: 1.0
+author: Daniel
