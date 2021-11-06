@@ -1,4 +1,4 @@
-# minecraft-hex-color-codes
+# minecraft colors
 use /greet to get a greeting.
 
 Send a message with a hexcode to get it sent to the server in colors! 
