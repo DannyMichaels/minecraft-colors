@@ -12,7 +12,7 @@ public class Utils {
 	 * hexcodes are numbers and A to F (uppercase or lower case) after 1 hashtag,
 	 * there are 6 figures in hexcode
 	 */
-	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}");
+	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}"); // this has to be private so I can use the function matchHexcodeWithChatMessage in main
 
 	public HashMap<String, ChatColor> getAllColors() {
 		HashMap<String, ChatColor> colorMap = new HashMap<>();
@@ -32,6 +32,11 @@ public class Utils {
 		return colorValue;
 	}
 
+	/* 
+	 * @method matchHexcodeWithChatMessage
+	 * @desc // add hexcode color to string input for example: #FF0000 Hello will be sent as: red color "Hello"
+	 * this is static due to this research: https://stackoverflow.com/questions/16503939/java-changing-value-of-a-variable-through-a-method
+	 */
 	public static String matchHexcodeWithChatMessage(String message) {
 		Matcher matcher = validHexcodeRegex.matcher(message);
 
@@ -41,7 +46,6 @@ public class Utils {
 			matcher = validHexcodeRegex.matcher(message);
 		}
 	
-		System.out.println("NEW MSG?" + message);
 		return message;
 	}
 }

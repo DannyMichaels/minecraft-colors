@@ -24,12 +24,12 @@ public class Main extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public static void onChat(AsyncPlayerChatEvent event) {
+		// this is static so I can change message through this utils function https://stackoverflow.com/questions/16503939/java-changing-value-of-a-variable-through-a-method
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		// also works with gradients https://rgb.birdflop.com/
-		message = Utils.matchHexcodeWithChatMessage(message); // add hexcode color to user input for
-																// example: #FF0000 Hello will be sent
-																// as: red color "Hello"
+		message = Utils.matchHexcodeWithChatMessage(message);
+
 		player.sendMessage(message);
 	}
 
