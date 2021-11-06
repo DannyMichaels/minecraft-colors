@@ -2,7 +2,7 @@ package com.daniel.hexcolorcodes;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
-
+import java.awt.Color;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
@@ -23,7 +23,9 @@ public class Main extends JavaPlugin implements Listener {
 	public void onChat(AsyncPlayerChatEvent event) {
 		Player player = event.getPlayer();
 		ChatColor purple = getOneColor("purple");
-		player.sendMessage(purple + "Hello!");
+		ChatColor yellow = getOneColor("purple");
+
+		player.sendMessage(purple + "Hello! " + yellow + player.getName());
 	}
 
 	public HashMap<String, ChatColor> getAllColors() {
@@ -32,6 +34,7 @@ public class Main extends JavaPlugin implements Listener {
 		colorMap.put("purple", ChatColor.of("#800080"));
 		colorMap.put("red", ChatColor.of("#FF0000"));
 		colorMap.put("blue", ChatColor.of("#0000FF"));
+		colorMap.put("yellow", ChatColor.of(new Color(255, 255, 0))); // new java util rgb
 
 		return colorMap;
 	}
