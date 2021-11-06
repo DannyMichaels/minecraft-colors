@@ -12,7 +12,10 @@ public class Utils {
 	 * hexcodes are numbers and A to F (uppercase or lower case) after 1 hashtag,
 	 * there are 6 figures in hexcode
 	 */
-	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}"); // this has to be private so I can use the function matchHexcodeWithChatMessage in main
+	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}"); // this has to be public so I can use
+																					// the function
+																					// matchHexcodeWithChatMessage in
+																					// Main file
 
 	public HashMap<String, ChatColor> getAllColors() {
 		HashMap<String, ChatColor> colorMap = new HashMap<>();
@@ -32,10 +35,13 @@ public class Utils {
 		return colorValue;
 	}
 
-	/* 
+	/*
 	 * @method matchHexcodeWithChatMessage
-	 * @desc // add hexcode color to string input for example: #FF0000 Hello will be sent as: red color "Hello"
-	 * this is static due to this research: https://stackoverflow.com/questions/16503939/java-changing-value-of-a-variable-through-a-method
+	 * 
+	 * @desc // add hexcode color to string input for example: #FF0000 Hello will be
+	 * sent as: red color "Hello" this is static due to this research:
+	 * https://stackoverflow.com/questions/16503939/java-changing-value-of-a-
+	 * variable-through-a-method
 	 */
 	public static String matchHexcodeWithChatMessage(String message) {
 		Matcher matcher = validHexcodeRegex.matcher(message);
@@ -43,9 +49,20 @@ public class Utils {
 		while (matcher.find()) {
 			String color = message.substring(matcher.start(), matcher.end());
 			message = message.replace(color, ChatColor.of(color) + ""); // convert it to string with + ""
+			message = replaceAndSymbolIfExists(message);
 			matcher = validHexcodeRegex.matcher(message);
 		}
-	
+
 		return message;
+	}
+
+	// replace & symbol from gradient hexcodes from https://rgb.birdflop.com/ (type
+	// default)
+	public static String replaceAndSymbolIfExists(String string) {
+		if (string.contains("&")) { // .contains is basically JS str.includes
+			string = string.replaceAll("&", "");
+		}
+
+		return string;
 	}
 }
