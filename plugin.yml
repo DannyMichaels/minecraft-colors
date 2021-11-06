@@ -1,5 +1,7 @@
-main: com.daniel.hexcolorcodes.Main
-name: MinecraftHexcodeColors
-description: send a message and get a hexcode response message
+main: com.daniel.minecraftcolors.Main
+name: MinecraftColors
+description: send a message and get a colored response message
 version: 1.0
 author: Daniel
+commands:
+  greet:
