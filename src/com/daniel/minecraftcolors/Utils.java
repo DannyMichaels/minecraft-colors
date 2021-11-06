@@ -10,8 +10,8 @@ import net.md_5.bungee.api.ChatColor;
 public class Utils {
 	/*
 	 * hexcodes are numbers and A to F (uppercase or lower case) after 1 hashtag,
-	 * there are 6 figures in hexcode
-	 * has to be public so can be accessed in Main.java
+	 * there are 6 figures in hexcode has to be public so can be accessed in
+	 * Main.java
 	 */
 	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}");
 
