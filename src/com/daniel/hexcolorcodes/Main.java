@@ -25,7 +25,7 @@ public class Main extends JavaPlugin implements Listener {
 		ChatColor purple = getOneColor("purple");
 		ChatColor yellow = getOneColor("purple");
 
-		player.sendMessage(purple + "Hello " + yellow + player.getName() + " !");
+		player.sendMessage(purple + "Hello " + yellow + player.getName() + "!");
 	}
 
 	public HashMap<String, ChatColor> getAllColors() {
