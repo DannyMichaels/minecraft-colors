@@ -12,9 +12,10 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class Main extends JavaPlugin implements Listener {
+// when to use static? 
+// https://stackoverflow.com/questions/2671496/when-to-use-static-methods
 
-	private static Utils utils = new Utils(); // my separate utilities file (Utils.java)
+public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
@@ -23,9 +24,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	@EventHandler
-	public static void onChat(AsyncPlayerChatEvent event) {
-		// this is static so I can change message through this utils function
-		// https://stackoverflow.com/questions/16503939/java-changing-value-of-a-variable-through-a-method
+	public void onChat(AsyncPlayerChatEvent event) {
 		// Player player = event.getPlayer();
 
 		String message = event.getMessage();
@@ -50,7 +49,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	public void greetPlayer(Player player) {
-		ChatColor purple = utils.getOneColor("purple");
+		ChatColor purple = Utils.getOneColor("purple"); // my separate utilities file (Utils.java)
 
 		player.sendMessage(purple + "Hello " + player.getName() + "!");
 	}

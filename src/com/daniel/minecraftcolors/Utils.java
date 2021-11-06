@@ -9,13 +9,13 @@ import net.md_5.bungee.api.ChatColor;
 
 public class Utils {
 	/*
-	 * hexcodes are numbers and A to F (uppercase or lower case) after 1 hashtag,
-	 * there are 6 figures in hexcode has to be public so can be accessed in
-	 * Main.java
+	 * hexcodeRegex: hexcodes are numbers and A to F (uppercase or lower case) after
+	 * 1 hashtag, there are 6 figures in hexcode. hexcodeRegex has to be public so
+	 * can be accessed in Main.java
 	 */
 	public static Pattern hexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}");
 
-	public HashMap<String, ChatColor> getAllColors() {
+	public static HashMap<String, ChatColor> getAllColors() {
 		HashMap<String, ChatColor> colorMap = new HashMap<>();
 
 		colorMap.put("purple", ChatColor.of("#800080")); // hexcode
@@ -26,7 +26,7 @@ public class Utils {
 		return colorMap;
 	}
 
-	public ChatColor getOneColor(String colorKey) {
+	public static ChatColor getOneColor(String colorKey) {
 		HashMap<String, ChatColor> colorMap = getAllColors();
 
 		ChatColor colorValue = colorMap.get(colorKey);
@@ -36,10 +36,8 @@ public class Utils {
 	/*
 	 * @method matchHexcodeWithChatMessage
 	 * 
-	 * @desc // add hexcode color to string input for example: #FF0000 Hello will be
-	 * sent as: red color "Hello" this is static due to this research:
-	 * https://stackoverflow.com/questions/16503939/java-changing-value-of-a-
-	 * variable-through-a-method
+	 * @desc // add hexcode color to string input. for example: #FF0000 Hello will
+	 * be sent as: red color "Hello"
 	 */
 	public static String matchHexcodeWithChatMessage(String message) {
 		Matcher matcher = hexcodeRegex.matcher(message);
@@ -54,10 +52,12 @@ public class Utils {
 		return message;
 	}
 
-	// replace & symbol from gradient hexcodes from https://rgb.birdflop.com/ (type
-	// default)
+	/*
+	 * @method replaceAndSymbolIfExists /* @desc replace & symbol from gradient
+	 * hexcodes from https://rgb.birdflop.com/ (type /* default)
+	 */
 	public static String replaceAndSymbolIfExists(String string) {
-		if (string.contains("&")) { // .contains is basically JS str.includes
+		if (string.contains("&")) {
 			string = string.replaceAll("&", "");
 		}
 
