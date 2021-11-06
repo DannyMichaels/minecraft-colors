@@ -13,7 +13,7 @@ public class Utils {
 	 * there are 6 figures in hexcode has to be public so can be accessed in
 	 * Main.java
 	 */
-	public static Pattern validHexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}");
+	public static Pattern hexcodeRegex = Pattern.compile("#[a-fA-F0-9]{6}");
 
 	public HashMap<String, ChatColor> getAllColors() {
 		HashMap<String, ChatColor> colorMap = new HashMap<>();
@@ -42,13 +42,13 @@ public class Utils {
 	 * variable-through-a-method
 	 */
 	public static String matchHexcodeWithChatMessage(String message) {
-		Matcher matcher = validHexcodeRegex.matcher(message);
+		Matcher matcher = hexcodeRegex.matcher(message);
 
 		while (matcher.find()) {
 			String color = message.substring(matcher.start(), matcher.end());
 			message = message.replace(color, ChatColor.of(color) + ""); // convert it to string with + ""
 			message = replaceAndSymbolIfExists(message);
-			matcher = validHexcodeRegex.matcher(message);
+			matcher = hexcodeRegex.matcher(message);
 		}
 
 		return message;
